@@ -1,0 +1,22 @@
+{% extends 'admin/base_admin.html.twig' %}
+{% block body %}
+    <h1>Products</h1>
+    {{ parent() }}
+    <div class="container">
+        <a href="/admin/createProduct">Create New Product</a>
+        <ul>
+        {% for product in products %}
+            <li>Id: {{ product.id }}</li>
+            <li>Name: {{ product.name }}</li>
+            <li>Price: {{ product.price }}</li>
+            <li>From category: {{ product.category.name }}</li>
+            <li><a href="/admin/editProduct/{{ product.slug }}">Edit</a></li>
+            <li><a href="/admin/deleteProduct/{{ product.id }}">Delete</a></li>
+            <br>
+        {% endfor %}
+        </ul>
+        <div class="navigation">
+            {{ knp_pagination_render(products) }}
+        </div>
+    </div>        
+{% endblock %}

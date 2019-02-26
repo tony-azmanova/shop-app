@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>{{ product.getName }}</h3>
+    <div class="container mb-2">
+        <img class="img-thumbnail" src="{{ asset(product.getThumbnails['medium']) }}"/>
+        <div class="card-body">
+            <p class="card-text">{{ product.getDescription }}</p>
+            <p class="card-text">{{ product.getPrice }}$</p>
+            <a href="#" class="btn btn-primary">Buy</a>
+        </div>
+    </div>        
+{% endblock %}

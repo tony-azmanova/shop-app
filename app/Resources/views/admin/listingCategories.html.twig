@@ -1,0 +1,20 @@
+{% extends 'admin/base_admin.html.twig' %}
+{% block body %}
+    <h1>Categories</h1>
+    {{ parent() }}
+    <div class="container">
+        <a href="/admin/createCategory">Create New Category</a>
+        <ul>
+        {% for category in categories %}
+            <li>Id: {{ category.id }}</li>
+            <li>Name: {{ category.name }}</li>
+            <li><a href="/admin/editCategory/{{ category.id }}">Edit</a></li>
+            <li><a href="/admin/deleteCategory/{{ category.id }}">Delete</a></li>
+            <br>
+        {% endfor %}
+        </ul>
+        <div class="navigation">
+            {{ knp_pagination_render(categories) }}
+        </div>
+    </div>    
+{% endblock %}

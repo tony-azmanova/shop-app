@@ -1,0 +1,24 @@
+{% extends 'admin/base_admin.html.twig' %}
+{% block body %}
+    <h2>Edit Product</h2>
+    <div class="container">
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.price) }}
+            {{ form_row(form.color) }}
+            {{ form_row(form.weight) }}
+            {{ form_row(form.quantity) }}
+            {{ form_row(form.meta_title) }}
+            {{ form_row(form.meta_description) }}
+            {{ form_row(form.meta_keywords) }}
+            {{ form_row(form.category) }}
+            {{ form_row(form.image) }}
+            {% if product.image %}
+                <img class="img-thumbnail" src="{{ asset(thumbnails['medium']) }}"/>
+            {% endif %}
+            <button type="submit">Save</button>
+            {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock %}

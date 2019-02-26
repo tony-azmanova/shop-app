@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}my description!{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}my keywords!{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header class="header">
+           <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                {% if is_granted('ROLE_USER') %}
+                    <a class="nav-link active" href="{{ path('security_logout') }}">Logout</a>
+                {% else %}
+                    <a class="nav-link active" href="{{ path('security_login') }}">Login</a>
+                    <a class="nav-link active" href="{{ path('app_registration_index') }}">Register</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="nav-link active" href="{{ path('admin_index') }}">Admin</a>
+                {% endif %}
+                <a class="nav-link active" href="{{ path('product_listing') }}">Products</a>
+            </nav>
+        </header>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

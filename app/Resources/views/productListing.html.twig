@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'messages' %}
+{% block body %}
+        <h1>Products</h1>
+        <div class="container mb-2">
+            {{ form_start(filters, {'action': path('product_listing'), 'method': 'GET'}) }}
+                {{ form_row(filters.category) }}
+                {{ form_row(filters.color) }}
+                {{ form_row(filters.order) }}
+                <button class="btn btn-primary" type="submit">Filter</button>
+            {{ form_end(filters) }}
+        </div>
+        <div class="card-deck container mb-2">
+            <div class="row">
+                {% for product in products %}
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ asset(product.getThumbnails['medium']) }}"/>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/productDetails/{{ product.getSlug }}">{{ product.getName }}</a></h5>
+                            <p class="card-text">{{ product.getDescription }}</p>
+                            <p class="card-text">${{ product.getPrice }}</p>
+                            <a href="#" class="btn btn-primary">Buy</a>
+                        </div>
+                  </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(products) }}
+        </div>     
+{% endblock %}
+

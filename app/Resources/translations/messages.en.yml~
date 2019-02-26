@@ -1,0 +1,10 @@
+Color: Color
+Category: Category
+price.desc: 'Price, desc'
+price.asc: 'Price, asc'
+select.all: all
+Order: Order
+name.asc: 'Name, asc'
+name.desc: 'Name, desc'
+category: __category
+
