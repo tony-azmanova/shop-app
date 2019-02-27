@@ -19,12 +19,12 @@ class ThumbnailPresenter
     public function getThumbnails()
     {
         if (!$this->product->getImage()) {
-            return $this->thumbnailService->getThumbnails('uploads/no_image_found.png');
+            return ['medium' => 'images/defaults/no_image_found.png'];
         }
 
         return $this->thumbnailService->getThumbnails(
-                $this->product->getImage()->getFilePath()
-            );
+            $this->product->getImage()->getFilePath()
+        );
     }
 
     public function __call($method, $args)
